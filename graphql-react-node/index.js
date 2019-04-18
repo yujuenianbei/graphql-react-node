@@ -5,4 +5,6 @@ require('babel-register') ({
 })
 
 require('babel-polyfill');
-require('./graphql-port/postObject')
+// require('./graphql-port/postMutation')
+// require('./graphql-port/GraphQLSchema')
+require('./app')

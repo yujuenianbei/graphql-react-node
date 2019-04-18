@@ -21,11 +21,6 @@ class App extends Component {
       });
 
     // json
-
-    
-    
-  
-        
       var sides = 3;
       var rolls = 10;
       var query = `query getDie($sides: Int!, $rolls: Int!) {

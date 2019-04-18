@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class App extends Component {
+class PostArgument extends Component {
     componentDidMount() {
         var dice = 3;
         var sides = 10;
@@ -56,4 +56,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default PostArgument;
