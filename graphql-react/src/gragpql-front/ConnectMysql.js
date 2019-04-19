@@ -36,12 +36,13 @@ class App extends Component {
     }
     postQuery = () => {
         console.log(this.refs.findInputId.value);
-        var id = this.refs.findInputId.value;
-        var query = `query GetMessage($id: ID!) {
-            getMessage(id: $id) {
+        var id = parseInt(this.refs.findInputId.value);
+        var query = `query user($id: Int) {
+            user(id: $id) {
                 id,
-                author,
-                content
+                name,
+                sex,
+                intro
             }
         }`;
         fetch('/graphql', {
