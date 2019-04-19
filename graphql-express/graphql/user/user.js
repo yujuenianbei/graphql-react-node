@@ -1,6 +1,6 @@
 
 var $sql = require('../../dao/userSqlMapping');
-var { query } = require("../../sql/init")
+var { searchSql } = require("../../sql/init")
 var {
     GraphQLList,
     GraphQLObjectType,
@@ -72,15 +72,15 @@ module.exports = {
                 id: {type: new GraphQLNonNull(GraphQLInt)}
             },
             resolve:async function (source,{id}) {
-                console.log(await query($sql.queryAll));
-                return (await query($sql.queryAll))[id];
+                console.log(await searchSql($sql.queryById,[id]))
+                return (await searchSql($sql.queryById,[id]));
             }
         },
         users:{
             type:new GraphQLList(User),
             description:'查询全部用户列表',
             resolve:async function () {
-                return await query($sql.queryAll);
+                return await searchSql($sql.queryAll);
             }
         }
     },
@@ -100,16 +100,7 @@ module.exports = {
                     sex:sex,
                     intro:intro
                 };
-                // query( $sql.addUser,[user.name,user.sex,user.intro], function(err, rows){
-                //     console.log(rows.message)
-                //     // query( $sql.addUser,[user.name,user.sex,user.intro])
-                //     return rows
-                // });
-                await query( $sql.addUser,[user.name,user.sex,user.intro], async function(err, rows){
-                    console.log(rows.insertId)
-                    console.log(await query( $sql.queryAll)) ;
-                    return await query( $sql.queryAll)
-                });
+                return await searchSql( $sql.addUser,[user.name,user.sex,user.intro]);
             }
         },
         addUserByInput:{
@@ -119,7 +110,7 @@ module.exports = {
                 userInfo:{type: UserInput},
             },
             resolve:async function (source,{userInfo}) {
-                return await query( $sql.addUser,[userInfo.name,userInfo.sex,userInfo.intro]);
+                return await searchSql( $sql.addUser,[userInfo.name,userInfo.sex,userInfo.intro]);
             }
         }
     }

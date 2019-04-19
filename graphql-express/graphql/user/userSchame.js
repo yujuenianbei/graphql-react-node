@@ -1,5 +1,5 @@
 var $sql = require('../../dao/userSqlMapping');
-var util = require("../../util/util");
+var { searchSql, query } = require("../../sql/init")
 var {
     GraphQLList,
     GraphQLObjectType,
@@ -84,8 +84,8 @@ const schema = new GraphQLSchema({
                     console.log("++++++")
                     console.log(id)
                     console.log("========")
-                    console.log(await util.searchSql($sql.queryById,[id]));
-                    return (await util.searchSql($sql.queryById,[id]))[0];
+                    console.log(await searchSql($sql.queryById,[id]));
+                    return (await searchSql($sql.queryById,[id]))[0];
                 }
             }
         }),

@@ -2,10 +2,13 @@
 
 # dependencies
 /node_modules
-/reacting/node_modules
+/graphql-express/node_modules
+/graphql-react/node_modules
+/graphql-react-node/node_modules
+/nodejs_GraphQLFor_es-mysql/node_modules
 /.pnp
 .pnp.js
-
+.vscode
 # testing
 /coverage
 

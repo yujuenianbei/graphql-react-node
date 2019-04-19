@@ -87,6 +87,21 @@ const query = (sql, param, callback = () => { }, useTransaction) =>
     }
   });
 
+async function searchSql($sql,params) {
+  return   new Promise((resolve, reject) => {
+        pool.getConnection(function (err, connection) {
+            connection.query($sql, params,function (err, result) {
+                connection.release();
+                if (err) {
+                    reject(err)
+                }
+                if(result.insertId) result.id = result.insertId;
+                 resolve(result);
+            });
+        });
+    })
+}
+
 // 验证数据库是否初始化完成
 const checkTables = (query) => {
   return new Promise((resolve, reject) => {
@@ -104,7 +119,6 @@ const init = (query) => {
   });
 };
 
-
 const initdataLast = (init, result, initTimes, query) => {
     console.log(3)
     main(query);
@@ -115,5 +129,6 @@ const initdataLast = (init, result, initTimes, query) => {
 module.exports = {
   checkTables,
   query,
-  initMysql
+  initMysql,
+  searchSql
 };

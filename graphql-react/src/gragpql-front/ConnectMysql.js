@@ -5,16 +5,14 @@ class App extends Component {
 
     }
     postMutationAdd = () => {
-        console.log(this.refs.addInputAuthor.value);
-        console.log(this.refs.addInputContent.value);
-        var author = this.refs.addInputAuthor.value;
-        var content = this.refs.addInputContent.value;
-        var query = `mutation addUser($id: ID!,$name: String!,$sex: String! ,$intro: String!) {
-            addUser(id: $id, name: $name, sex: $sex, intro: $intro) {
-                id,
-                name,
-                sex,
-                intro
+        // console.log(this.refs.addInputAuthor.value);
+        // console.log(this.refs.addInputContent.value);
+        var name = this.refs.addInputName.value;
+        var sex = this.refs.addInputSex.value;
+        var intro = this.refs.addInputIntro.value;
+        var query = `mutation addUser($name: String!,$sex: String! ,$intro: String!) {
+            addUser(name: $name, sex: $sex, intro: $intro) {
+                id
             }
         }`;
         fetch('/graphql', {
@@ -27,10 +25,9 @@ class App extends Component {
             body: JSON.stringify({
                 query,
                 variables: {
-                    input: {
-                        author,
-                        content,
-                    }
+                    name,
+                    sex,
+                    intro
                 }
             })
         })
@@ -103,20 +100,19 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <header className="App-header">
                     <h4>添加</h4>
-                    <input ref='addInputAuthor' placeholder='add author' />
-                    <input ref='addInputContent' placeholder='add content' />
+                    <input ref='addInputName' placeholder='add name' />
+                    <input ref='addInputSex' placeholder='add sex' />
+                    <input ref='addInputIntro' placeholder='add intro' />
                     <button onClick={this.postMutationAdd}>add</button>
                     <h4>查询</h4>
-                    <input ref='findInputId' placeholder='query author' />
+                    <input ref='findInputId' placeholder='query id' />
                     <button onClick={this.postQuery}>query</button>
                     <h4>修改</h4>
                     <input ref='editInputId' placeholder='eidt ID' />
                     <input ref='editInputAuthor' placeholder='eidt author' />
                     <input ref='editInputContent' placeholder='eidt content' />
                     <button onClick={this.postMutationEdit}>edit</button>
-                </header>
             </div>
         );
     }

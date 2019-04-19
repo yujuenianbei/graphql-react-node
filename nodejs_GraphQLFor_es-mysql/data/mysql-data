@@ -1,0 +1,61 @@
+---------------------data
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565233', '17103111341310232643', '1', '1521518635169', '1521518637750', '1521518642203novehicle.jpg', '1521518642222novehicle.jpg', '男',  '无', '无', '电瓶车', '空载', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565234', '17103111291310235708', '2', '1521518642594', '1521518645163', '1521518648685novehicle.jpg', '1521518648714novehicle.jpg', '男',  NULL, NULL, NULL, NULL, '短发', '长袖', '黑', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565235', '17103111291310235708', '1', '1521518648584', '1521518649745', '1521518653129novehicle.jpg', '1521518653147novehicle.jpg', '男',  '无', '头盔', '电瓶车', '空载', NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565236', '17103111341310232643', '2', '1521518647346', '1521518650144', '1521518653812novehicle.jpg', '1521518653846novehicle.jpg', '女',  NULL, NULL, NULL, NULL, '带帽', '长袖', '黄', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565237', '17103111341310232643', '2', '1521518624574', '1521518655155', '1521518660096novehicle.jpg', '1521518660123novehicle.jpg', '女',  NULL, NULL, NULL, NULL, '短发', '长袖', '橙', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565238', '17103111341310232643', '2', '1521518650349', '1521518659535', '1521518663886novehicle.jpg', '1521518663914novehicle.jpg', '女',  NULL, NULL, NULL, NULL, '短发', '长袖', '黑', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565239', '17103111341310232643', '2', '1521518657742', '1521518660547', '1521518666307novehicle.jpg', '1521518666326novehicle.jpg', '无法判断',  NULL, NULL, NULL, NULL, '短发', '长袖', '红', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565240', '17103111341310232643', '2', '1521518661555', '1521518663564', '1521518669751novehicle.jpg', '1521518669769novehicle.jpg', '男',  NULL, NULL, NULL, NULL, '短发', '短袖', '黑', '长裤', '灰');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565241', '17103111341310232643', '2', '1521518663976', '1521518667354', '1521518672658novehicle.jpg', '1521518672681novehicle.jpg', '无法判断', NULL, NULL, NULL, NULL, '短发', '长袖', '花色', '无法判断', '无法判断');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565242', '17103111341310232643', '2', '1521518669163', '1521518671534', '1521518675770novehicle.jpg', '1521518675791novehicle.jpg', '女',  NULL, NULL, NULL, NULL, '短发', '长袖', '黄', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565243', '17103111341310232643', '2', '1521518672395', '1521518676355', '1521518681824novehicle.jpg', '1521518681841novehicle.jpg', '女',  NULL, NULL, NULL, NULL, '短发', '长袖', '黄', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565244', '17103111341310232643', '2', '1521518686779', '1521518688548', '1521518693880novehicle.jpg', '1521518693903novehicle.jpg', '女',  NULL, NULL, NULL, NULL, '短发', '长袖', '黑', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565245', '17103111341310232643', '2', '1521518705989', '1521518708192', '1521518712444novehicle.jpg', '1521518712465novehicle.jpg', '女',  NULL, NULL, NULL, NULL, '短发', '长袖', '红', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565246', '17103111341310232643', '2', '1521518700153', '1521518712366', '1521518716317novehicle.jpg', '1521518716348novehicle.jpg', '男',  NULL, NULL, NULL, NULL, '短发', '长袖', '黑', '长裤', '黑');
+INSERT INTO `result_novehicle` (`id`, `cameraid`, `rtype`, `entrytime`, `leavetime`, `ori_img`, `img`, `sex`, `canopy`, `headwear`, `bicycletype`, `has_object`, `hair`, `lower_type`, `lower_color`, `upper_type`, `upper_color`) VALUES ('565247', '17103111341310232643', '2', '1521518712968', '1521518715185', '1521518719012novehicle.jpg', '1521518719032novehicle.jpg', '男',  NULL, NULL, NULL, NULL, '短发', '长袖', '黑', '长裤', '黑');
+
+--------------------create sql
+CREATE TABLE `result_novehicle` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
+  `cameraid` varchar(128) NOT NULL COMMENT '摄像头id',
+  `rtype` varchar(8) NOT NULL COMMENT '检测目标类型',
+  `entrytime` varchar(16) DEFAULT NULL COMMENT '进入时间',
+  `leavetime` varchar(16) DEFAULT NULL COMMENT '离开时间',
+  `ori_img` varchar(128) DEFAULT NULL COMMENT '图片',
+  `img` varchar(128) DEFAULT NULL COMMENT '图片',
+  `sex` varchar(8) DEFAULT NULL COMMENT '性别',
+  `canopy` varchar(8) DEFAULT NULL COMMENT '遮雨棚',
+  `headwear` varchar(8) DEFAULT NULL COMMENT '头饰',
+  `bicycletype` varchar(8) DEFAULT NULL COMMENT '非机动车类别',
+  `has_object` varchar(32) DEFAULT NULL COMMENT '车上载物',
+  `hair` varchar(30) DEFAULT NULL,
+  `lower_type` varchar(30) DEFAULT NULL,
+  `lower_color` varchar(30) DEFAULT NULL,
+  `upper_type` varchar(30) DEFAULT NULL,
+  `upper_color` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=565248 DEFAULT CHARSET=utf8 COMMENT='结果库'
+
+---------------------mysql query
+query{
+  result_novehicle(cameraid:"17103111291310235708",id:9){
+    id,
+    cameraid,
+    rtype,
+    entrytime,
+    leavetime,
+    ori_img,
+    img
+    sex
+    canopy
+    headwear
+    bicycletype
+    has_object
+    hair
+    lower_type
+    lower_color
+    upper_type
+    upper_color
+  }
+}

@@ -1,0 +1,159 @@
+POST novehicle/default/1
+{
+     "img": "novehicle2.ipg",
+     "sex": "女",
+     "rtype": "2",
+     "entryTime": "1517616626418",
+     "hair": "无法判断",
+     "feature": "epQYPHZPJj",
+     "cameraId": "11101111341310232643",
+     "levelTime": "1517616638408",
+     "ori_img": "novehicle1.jpg",
+     "has_object": "空载",
+     "bicycletype": "电瓶车",
+     "lower_type": "短裤",
+     "lower_color": "黑",
+     "upper_type":"长袖",
+     "upper_color":"white"
+}
+
+
+POST novehicle/default/2
+{
+   "img": "novehicle.jpg",
+          "sex": "女",
+          "rtype": "1",
+          "headwear": "无",
+          "entryTime": "1517558304526",
+          "bicycletype": "自动车",
+          "canopy": "无",
+          "cameraId": "11103111341310232643",
+          "levelTime": "1517558313878",
+          "ori_img": "novehicle.jpg",
+          "has_object": "空载",
+          "lower_type": "短裤",
+          "feature": "epQYPHZPJj",
+     "lower_color": "黑",
+     "hair": "短发",
+     "upper_type":"长袖",
+     "upper_color":"white"
+}
+
+POST  novehicle/default/3
+{
+          "img": "1517616722096novehicle.jpg",
+          "upper_type": "长裤",
+          "lower_color": "咖啡",
+          "sex": "女",
+          "rtype": "2",
+          "entryTime": "1517616704399",
+          "hair": "长发披散",
+          "cameraId": "17103111341310232643",
+          "levelTime": "1517616716415",
+          "feature": "epQYPHZPJj",
+          "ori_img": "1517616722116novehicle.jpg",
+          "lower_type": "长袖",
+          "upper_colour": "黑",
+          "bicycletype": "自动车",
+          "canopy": "无",
+          "headwear": "无",
+          "has_object": "空载"
+}
+
+
+PUT novehicle/default/4
+{
+			"img": "1518428794368novehicle.jpg",
+			"lower_type": "长裤",
+			"lower_color": "黑",
+      "sex": "男",
+      "rtype": "1",
+      "hair": "短发",
+			"has_object": "空载",
+      "headwear": "无",
+      "feature": "L0c3PRQXsT0Mka+8",
+      "bicycletype": "电瓶车",
+      "canopy": "无",
+      "cameraId": "17103111341310232643",
+      "ori_img": "1518428794386novehicle.jpg",
+      "upper_type": "长袖",
+      "upper_colour": "黑",
+      "entryTime": "1517573840873",
+      "levelTime": "1517573843276"
+}
+
+PUT novehicle/default/5
+{
+          "img": "1517573847548novehicle.jpg",
+          "lower_type": "长裤",
+          "lower_color": "黑",
+          "sex": "男",
+          "rtype": "2",
+          "entryTime": "1517573840873",
+          "hair": "短发",
+          "feature": "L0c3PRQXsT0Mka+8",
+          "cameraId": "11103111341310232643",
+          "levelTime": "1517573843276",
+          "ori_img": "1517573847567novehicle.jpg",
+          "upper_type": "长袖",
+          "upper_colour": "黑",
+          "headwear": "无",
+		      "has_object": "空载",
+          "bicycletype": "自行车",
+		       "canopy": "无"
+}
+
+PUT novehicle/default/6
+{
+          "img": "1518424182742novehicle.jpg",
+          "sex": "女",
+          "rtype": "1",
+          "headwear": "无",
+          "entryTime": "1518424166777",
+          "bicycletype": "电瓶车",
+          "canopy": "无",
+          "hair": "短发",
+          "has_object": "空载",
+          "feature": "rXzsPSOSiry",
+          "cameraId": "11103111291310235708",
+          "levelTime": "1518424178547",
+          "ori_img": "1518424182769novehicle.jpg",
+          "upper_type": "长袖",
+          "upper_colour": "白",
+		      "lower_type": "长裤",
+          "lower_color": "白"
+}
+
+
+-----------------query
+{
+  novehicleSearch(limit: 10, query: {match: {sex: {query: "男"}}}) {
+    count
+    max_score
+    took
+    timed_out
+    hits {
+      _index
+      _type
+      _id
+      _score
+      _source {
+        img
+        upper_type
+        lower_color
+        sex
+        rtype
+        headwear
+        hair
+        bicycletype
+        canopy
+        cameraId
+        ori_img
+        lower_type
+        upper_color
+        has_object
+      }
+    }
+  }
+}
+

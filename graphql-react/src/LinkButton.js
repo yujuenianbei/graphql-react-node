@@ -9,6 +9,7 @@ class Linker extends Component {
                     <li><Link to='/postObject'><p>postObject</p></Link></li>
                     <li><Link to='/postMutation' ><p>postMutation</p></Link></li>
                     <li><Link to='/GraphQLSchema' ><p>GraphQLSchema</p></Link></li>
+                    <li><Link to='/ConnectMysql' ><p>ConnectMysql</p></Link></li>
                 </ul>
             </div>
         );

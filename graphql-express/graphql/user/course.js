@@ -1,5 +1,5 @@
 var $sql = require('../../dao/userSqlMapping');
-var { query } = require("../../sql/init")
+var { searchSql, query } = require("../../sql/init")
 var {
     GraphQLList,
     GraphQLObjectType,
@@ -40,7 +40,7 @@ module.exports = {
             type:new GraphQLList(Course),
             description:'查询用户整体分数',
             resolve:async function () {
-                return await query($sql.courses);
+                return await searchSql($sql.courses);
             }
         },
         course:{
@@ -50,7 +50,7 @@ module.exports = {
                 id: {type: new GraphQLNonNull(GraphQLInt)}
             },
             resolve:async function(source,{id}) {
-                return await query($sql.courseById,[id]);
+                return await searchSql($sql.courseById,[id]);
             }
         }
     }

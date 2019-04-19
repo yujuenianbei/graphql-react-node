@@ -24,7 +24,7 @@ class Main extends Component {
                 <Route path="/postObject" component={postObject} />
                 <Route path="/postMutation" component={postMutation} />
                 <Route path="/GraphQLSchema" component={GraphQLSchema} />
-                <Route path="/connetcMysql" component={ConnectMysql} />
+                <Route path="/ConnectMysql" component={ConnectMysql} />
             </Router>
         );
     }
