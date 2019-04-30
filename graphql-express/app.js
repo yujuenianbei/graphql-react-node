@@ -7,15 +7,21 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var { query,initMysql, checkTables } = require('./sql/init');
+var { query, initMysql, checkTables } = require('./sql/init');
 var app = express();
 //设置跨域访问
-var allowCrossDomain = function(req, res, next) {
+var allowCrossDomain = function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
-  res.header('Access-Control-Allow-Credentials','true');
-  next();
+  res.header('Access-Control-Allow-Credentials', 'true');
+  //header头信息设置结束后，结束程序往下执行，返回
+  if (req.method.toLocaleLowerCase() === 'options') {
+    res.status(204);
+    return res.json({});   //直接返回空数据，结束此次请求
+  } else {
+    next();
+  }
 };
 app.use(allowCrossDomain);
 
@@ -37,15 +43,15 @@ app.use('/users', usersRouter);
 
 //graphql
 var graphqlHTTP = require('express-graphql');
-var userSchema =require ('./graphql/user/schema');
+var userSchema = require('./graphql/user/schema');
 // var blogSchema =require ('./graphql/article/schema');
 
 
 // var userSchema =require ('./graphql/user/userSchame');
 
 app.use('/graphql', graphqlHTTP({
-    schema: userSchema,
-    graphiql: true, //启用GraphiQL
+  schema: userSchema,
+  graphiql: true, //启用GraphiQL
 }));
 
 // app.use('/article', graphqlHTTP({
@@ -54,12 +60,12 @@ app.use('/graphql', graphqlHTTP({
 // }));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
