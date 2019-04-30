@@ -5,14 +5,15 @@ class App extends Component {
 
     }
     postMutationAdd = () => {
-        // console.log(this.refs.addInputAuthor.value);
-        // console.log(this.refs.addInputContent.value);
         var name = this.refs.addInputName.value;
         var sex = this.refs.addInputSex.value;
         var intro = this.refs.addInputIntro.value;
         var query = `mutation addUser($name: String!,$sex: String! ,$intro: String!) {
             addUser(name: $name, sex: $sex, intro: $intro) {
-                id
+                id,
+                name,
+                sex,
+                intro
             }
         }`;
         fetch('/graphql', {
@@ -63,17 +64,16 @@ class App extends Component {
             .then(data => console.log('json:', data));
     }
     postMutationEdit = () => {
-        console.log(this.refs.editInputId.value);
-        console.log(this.refs.editInputAuthor.value);
-        console.log(this.refs.editInputContent.value);
-        var id = this.refs.editInputId.value;
-        var author = this.refs.editInputAuthor.value;
-        var content = this.refs.editInputContent.value;
-        var query = `mutation UpdateMessage($id: ID!, $input: MessageInput) {
-            updateMessage(id: $id, input: $input) {
+        var id = parseInt(this.refs.editInputId.value);
+        var name = this.refs.editInputName.value;
+        var sex = this.refs.editInputSex.value;
+        var intro = this.refs.editInputIntro.value;
+        var query = `mutation addUserByInput($id: Int!, $name: String!,$sex: String! ,$intro: String!) {
+            addUserByInput(id: $id, name: $name, sex: $sex, intro: $intro) {
                 id,
-                author,
-                content
+                name,
+                sex,
+                intro
             }
         }`;
         fetch('/graphql', {
@@ -87,17 +87,48 @@ class App extends Component {
                 query,
                 variables: {
                     id,
-                    input: {
-                        author,
-                        content,
-                    }
+                    name,
+                    sex,
+                    intro
                 }
+
+                // variables: {
+                //     id,
+                //     input: {
+                //         author,
+                //         content,
+                //     }
+                // }
             })
         })
             .then(r => r.json())
             .then(data => console.log('json:', data));
     }
 
+    postMutationDelete = () => {
+        var id = parseInt(this.refs.deleteInputId.value);
+        var query = `mutation deleteUser($id: Int!) {
+            deleteUser(id: $id) {
+                id
+            }
+        }`;
+        fetch('/graphql', {
+            method: 'POST',
+            mode: "cors",
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify({
+                query,
+                variables: {
+                    id,
+                }
+            })
+        })
+            .then(r => r.json())
+            .then(data => console.log('json:', data));
+    }
     render() {
         return (
             <div className="App">
@@ -111,9 +142,13 @@ class App extends Component {
                     <button onClick={this.postQuery}>query</button>
                     <h4>修改</h4>
                     <input ref='editInputId' placeholder='eidt ID' />
-                    <input ref='editInputAuthor' placeholder='eidt author' />
-                    <input ref='editInputContent' placeholder='eidt content' />
+                    <input ref='editInputName' placeholder='eidt name' />
+                    <input ref='editInputSex' placeholder='eidt sex' />
+                    <input ref='editInputIntro' placeholder='eidt intro' />
                     <button onClick={this.postMutationEdit}>edit</button>
+                    <h4>删除</h4>
+                    <input ref='deleteInputId' placeholder='delete id' />
+                    <button onClick={this.postMutationDelete}>delete</button>
             </div>
         );
     }

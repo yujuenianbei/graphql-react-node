@@ -87,6 +87,7 @@ const query = (sql, param, callback = () => { }, useTransaction) =>
     }
   });
 
+// 执行sql语句
 async function searchSql($sql,params) {
   return   new Promise((resolve, reject) => {
         pool.getConnection(function (err, connection) {

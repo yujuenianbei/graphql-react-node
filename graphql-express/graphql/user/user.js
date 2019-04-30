@@ -140,19 +140,19 @@ var {
 const Db = require('../../sql/db');
 
 //定义schema及resolver
-const Unit=new GraphQLEnumType({
-    name:'Unit',
-    description:"单位",
+const Unit = new GraphQLEnumType({
+    name: 'Unit',
+    description: "单位",
     values: {
-        MM: {value: 'MM'},
-        cm: {value: 'cm'},
-        mm: {value: 'mm'},
+        MM: { value: 'MM' },
+        cm: { value: 'cm' },
+        mm: { value: 'mm' },
     }
 });
 
-const User=new GraphQLObjectType({
-    name:'User',
-    description:"用户信息实体",
+const User = new GraphQLObjectType({
+    name: 'User',
+    description: "用户信息实体",
     fields: () => {
         return ({
             // 这种可以
@@ -203,25 +203,27 @@ const User=new GraphQLObjectType({
     },
 });
 
-const  UserInput=new GraphQLInputObjectType({
-    name:'UserInput',
-    description:"用户信息Input实体",
-    fields:()=>({
-        name:{type:GraphQLString},
-        sex:{type:GraphQLString},
-        intro:{type:GraphQLString},
+const UserInput = new GraphQLInputObjectType({
+    name: 'UserInput',
+    description: "用户信息Input实体",
+    fields: () => ({
+        id: {type: GraphQLInt},
+        name: { type: GraphQLString },
+        sex: { type: GraphQLString },
+        intro: { type: GraphQLString },
         // stature:{type:Unit},
     }),
 });
 
 module.exports = {
-    query:{
-        user:{
+    query: {
+        // 查
+        user: {
             // 主要是这个　要不然出不来数据
-            type:new GraphQLList(User),
-            description:'根据id查询单个用户',
+            type: new GraphQLList(User),
+            description: '根据id查询单个用户',
             args: {
-                id: {type: GraphQLInt}
+                id: { type: GraphQLInt }
             },
 
             // 使用sequelize的方法进行查询
@@ -230,51 +232,83 @@ module.exports = {
             // }
 
             // 用sql查询
-            resolve:async function (source,{id}) {
-                return (await searchSql($sql.queryById,[id]));
+            resolve: async function (source, { id }) {
+                console.log(await searchSql($sql.queryById, [id]))
+                return (await searchSql($sql.queryById, [id]));
             }
         },
-        users:{
-            type:new GraphQLList(User),
-            description:'查询全部用户列表',
-            resolve:async function () {
+        users: {
+            type: new GraphQLList(User),
+            description: '查询全部用户列表',
+            resolve: async function () {
                 return await searchSql($sql.queryAll);
             }
         }
 
     },
-    mutation:{
-        addUser:{
-            type:new GraphQLList(User),
-            description:'添加用户',
+    mutation: {
+        // 增　返回新增的内容
+        addUser: {
+            type: new GraphQLList(User),
+            description: '添加用户',
             args: {
-                id:{type: GraphQLInt},
-                name:{type: GraphQLString},
-                sex:{type: GraphQLString},
-                intro:{type: GraphQLString},
+                id: { type: GraphQLInt },
+                name: { type: GraphQLString },
+                sex: { type: GraphQLString },
+                intro: { type: GraphQLString },
             },
-            // resolve:async function (source,{id,name,sex,intro}) {
-            //     var user={
-            //         name:name,
-            //         sex:sex,
-            //         intro:intro
-            //     };
-            //     return await searchSql( $sql.addUser,[user.name,user.sex,user.intro]);
-            //     // return Db.models.user.findAll({where: args});
-            // }
-
-            resolve(root, args) {
-                return Db.models.searchUser.findAll({where: args});
+            resolve: async function(root, args) {
+                return await Db.models.addUser.create({
+                    name: args.name,
+                    sex: args.sex,
+                    intro: args.intro,
+                }).then((result)=>{
+                    console.log(searchSql($sql.queryById, [result.id]))
+                    return searchSql($sql.queryById, [result.id])
+                });
             }
         },
-        addUserByInput:{
-            type:User,
-            description:'通过Input添加用户',
+        // 改 返回改过之后的内容
+        addUserByInput: {
+            type: new GraphQLList(User),
+            description: '修改用户信息',
             args: {
-                userInfo:{type: UserInput},
+                id: { type: GraphQLInt },
+                name: { type: GraphQLString },
+                sex: { type: GraphQLString },
+                intro: { type: GraphQLString },
             },
-            resolve:async function (source,{userInfo}) {
-                return await searchSql( $sql.addUser,[userInfo.name,userInfo.sex,userInfo.intro]);
+            resolve: async function(root, args) {
+                console.log(args.id,args.name,args.sex,args.intro)
+                return await Db.models.searchUser.update({
+                    name: args.name,
+                    sex: args.sex,
+                    intro: args.intro,
+                },{
+                    where:{
+                        id: args.id,
+                    }
+                }).then(() => {
+                    return searchSql($sql.queryById, [args.id])
+                  })
+            }
+        },
+        // 删
+        deleteUser:{
+            type: new GraphQLList(User),
+            description: '修改用户信息',
+            args: {
+                id: { type: GraphQLInt }
+            },
+            resolve: async function(root, args) {
+                return await Db.models.searchUser.destroy({
+                    where: {
+                      id: args.id,
+                    },
+                  }).then(async() => {
+                    console.log(await searchSql($sql.queryById, [args.id]))
+                    return await searchSql($sql.queryById, [args.id])
+                  })
             }
         }
     }
