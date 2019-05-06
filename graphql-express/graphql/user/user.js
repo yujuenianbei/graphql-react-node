@@ -290,6 +290,30 @@ module.exports = {
                     }
                 }).then(() => {
                     return searchSql($sql.queryById, [args.id])
+                })
+            }
+        },
+        updateUser: {
+            type: new GraphQLList(User),
+            description: '修改用户信息',
+            args: {
+                id: { type: GraphQLInt },
+                name: { type: GraphQLString },
+                sex: { type: GraphQLString },
+                intro: { type: GraphQLString },
+            },
+            resolve: async function(root, args) {
+                console.log(args.id,args.name,args.sex,args.intro)
+                return await Db.models.searchUser.update({
+                    name: args.name,
+                    sex: args.sex,
+                    intro: args.intro,
+                },{
+                    where:{
+                        id: args.id,
+                    }
+                }).then(() => {
+                    return searchSql($sql.queryById, [args.id])
                   })
             }
         },
